@@ -5,17 +5,16 @@ import ResourcesList from '../components/ResourseList'
 import ResourcesHigh from '../components/ResourseHighLight'
 import Newsletter from '../components/Newsletter'
 
-import data from '../pages/api/data.json'
 
-export default function Home() {
+export default function Home({Resources}) {
 
   
   return (
     <div>
       <NavBar ></NavBar>
-      <ResourcesHigh resources = {data.slice(4)}></ResourcesHigh>
+      <ResourcesHigh resources = {Resources.slice(4)}></ResourcesHigh>
       <Newsletter></Newsletter>
-      <ResourcesList resources = {data.slice(0,4)}></ResourcesList>
+      <ResourcesList resources = {Resources.slice(0,4)}></ResourcesList>
 
       <Footer></Footer>
 
@@ -25,4 +24,18 @@ export default function Home() {
     </div>
 
   )
+}
+
+export async function getServerSideProps(){
+
+  const resData = await fetch("http://localhost:3001/api/resources")
+  const data = await resData.json();
+
+  console.log(data)
+  return {
+    props:{
+        Resources: data
+    }
+  }
+
 }
