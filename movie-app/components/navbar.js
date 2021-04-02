@@ -1,3 +1,6 @@
+import Link from "next/link"
+
+
 const NavBar = () => {
 
   return (
@@ -27,19 +30,24 @@ const NavBar = () => {
                   </span>
                 </div>
               </div>
+              <Link href="/">
               <a className="navbar-item is-active is-size-5 has-text-weight-semibold">
                 Home
               </a>
+              </Link>
+            <Link href="../new">
               <a className="navbar-item is-size-5 has-text-weight-semibold">
-                Examples
+                New
               </a>
-              <a className="navbar-item is-size-5 has-text-weight-semibold">
-                Features
+            </Link>
+
+            <a className="navbar-item is-size-5 has-text-weight-semibold">
+              Features
               </a>
-            </div>
           </div>
         </div>
-      </nav>
+        </div>
+    </nav>
     </>
   )
 }

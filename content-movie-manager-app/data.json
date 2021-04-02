@@ -5,7 +5,6 @@
         "createdAt": "15/05/1999",
         "description": "I would like to learn JS language",
         "link": "https://link.com",
-        "image": "https://image.com",
         "priority":3,
         "timeToFinish":120,
         "active":true
@@ -16,7 +15,6 @@
         "createdAt": "15/05/1999",
         "description": "I would like to learn JS language",
         "link": "https://link.com",
-        "image": "https://image.com",
         "priority":3,
         "timeToFinish":120,
         "active":true
@@ -27,7 +25,6 @@
         "createdAt": "15/05/1999",
         "description": "I would like to learn JS language",
         "link": "https://link.com",
-        "image": "https://image.com",
         "priority":3,
         "timeToFinish":120,
         "active":true
@@ -38,7 +35,6 @@
         "createdAt": "20/01/2013",
         "description": "I would like to learn JS language",
         "link": "https://link.com",
-        "image": "https://image.com",
         "priority":3,
         "timeToFinish":120,
         "active":true
@@ -49,7 +45,6 @@
         "createdAt": "15/05/1999",
         "description": "I would like to learn JS language",
         "link": "https://link.com",
-        "image": "https://image.com",
         "priority":3,
         "timeToFinish":120,
         "active":true
