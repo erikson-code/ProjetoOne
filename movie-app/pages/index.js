@@ -5,24 +5,23 @@ import ResourcesList from '../components/ResourseList'
 import ResourcesHigh from '../components/ResourseHighLight'
 import Newsletter from '../components/Newsletter'
 
-import data from './api/data'
+import data from '../pages/api/data.json'
 
 export default function Home() {
 
-  console.log(data)
-
+  
   return (
     <div>
-      <NavBar></NavBar>
-      <ResourcesHigh></ResourcesHigh>
+      <NavBar ></NavBar>
+      <ResourcesHigh resources = {data.slice(4)}></ResourcesHigh>
       <Newsletter></Newsletter>
-      <ResourcesList></ResourcesList>
-      
+      <ResourcesList resources = {data.slice(0,4)}></ResourcesList>
+
       <Footer></Footer>
 
-      
 
-     
+
+
     </div>
 
   )
