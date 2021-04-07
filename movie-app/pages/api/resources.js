@@ -6,9 +6,15 @@ export default async function (req, res) {
         const data = await dataRes.json()
 
         res.send(data)
-    }else if(req.method === "POST"){
+    } else if (req.method === "POST") {
 
         console.log(req.body)
+        const { title, description, link, timeToFinish, priority } = req.body
+
+        if (!title || !description || !link || !timeToFinish || !priority) {
+            return res.status(422).send("Data are missing")
+        }
+
         return res.send("DATA HAS BEEN RECEIVED")
     }
 
