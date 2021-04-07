@@ -29,7 +29,7 @@ app.post("/api/resources", (req, res) => {
     resource.status = "Inactive"
     resource.id = Date.now().toString()
 
-    resources.push(resource)
+    resources.unshift(resource)
 
     fs.writeFile(pathToFile, JSON.stringify(resources,null,2),(error)=>{
         if (error){
