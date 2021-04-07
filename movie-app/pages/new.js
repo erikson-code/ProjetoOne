@@ -2,24 +2,26 @@ import Resources from "./api/resources"
 import NavBar from "../components/navbar"
 import { useState } from "react"
 import axios from 'axios'
+import {useRouter} from 'next/router'
+
 
 const DEFAULT_DATA = {
     title: "",
     description: "",
     link: "http://",
     priority: "2",
-    timeToFinish: ""
+    timeToFinish: 60
 }
 
 const ResourceCreatePage = () => {
 
 
     const [form, setForm] = useState(DEFAULT_DATA)
-
+    const router = useRouter()
     const submitForm = () => {
         
         axios.post("/api/resources",form)
-        .then(response=>{alert(response.data)})
+        .then(_=>{router.push("/")})
         .catch(error=>{alert(error?.response?.data)})
     }
 

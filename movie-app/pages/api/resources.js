@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 
 export default async function (req, res) {
 
@@ -15,7 +17,15 @@ export default async function (req, res) {
             return res.status(422).send("Data are missing")
         }
 
-        return res.send("DATA HAS BEEN RECEIVED")
+        try{
+            const axiosRes = axios.post("http://localhost:3001/api/resources",req.body)
+            return res.send((await axiosRes).data)
+        }catch{
+            return status(422).send("Data cannot be stored")
+        }
+        
+
+       
     }
 
 }
