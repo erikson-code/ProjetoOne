@@ -5,7 +5,7 @@ import { useState } from "react"
 const DEFAULT_DATA = {
     title: "",
     description: "",
-    link: "",
+    link: "http://",
     priority: "2",
     timeToFinish: ""
 }
@@ -16,8 +16,27 @@ const ResourceCreatePage = () => {
     const [form, setForm] = useState(DEFAULT_DATA)
 
     const submitForm = () => {
-        alert(JSON.stringify(form))
+        
+        fetch("/api/resources",{
+
+                body: JSON.stringify(form),
+                headers: {"Content-Type":"application/json"},
+                method: "POST"
+
+        })
     }
+
+    const handleChange = event => {
+        const name = event.target.name
+        const value = event.target.value
+        setForm({
+            ...form,
+            [name]: value
+        })
+    }
+
+    const resetForm = () => setForm(DEFAULT_DATA)
+
 
     return (
 
@@ -28,15 +47,10 @@ const ResourceCreatePage = () => {
                 <div className="field">
                     <label className="label">Title</label>
                     <div className="control">
-                        <input value={form.title}
-                            onChange={event => {
-
-                                setForm({
-                                    ...form,
-                                    title: event.target.value
-                                })
-
-                            }}
+                        <input
+                            name="title"
+                            value={form.title}
+                            onChange={handleChange}
                             className="input"
                             type="text"
                             placeholder="Learn Next JS and Sanity" />
@@ -47,14 +61,9 @@ const ResourceCreatePage = () => {
                     <label className="label">Description</label>
                     <div className="control">
                         <textarea
-                            onChange={event => {
+                            onChange={handleChange}
+                            name="description"
 
-                                setForm({
-                                    ...form,
-                                    description: event.target.value
-                                })
-
-                            }}
                             value={form.description}
                             className="textarea"
                             placeholder="Textarea"></textarea>
@@ -65,15 +74,9 @@ const ResourceCreatePage = () => {
                     <label className="label">Link</label>
                     <div className="control">
                         <input
+                            name="link"
                             value={form.link}
-                            onChange={event => {
-
-                                setForm({
-                                    ...form,
-                                    link: event.target.value
-                                })
-
-                            }}
+                            onChange={handleChange}
                             className="input"
                             type="text"
                             placeholder="https:://link.com" />
@@ -85,14 +88,8 @@ const ResourceCreatePage = () => {
                     <div className="control">
                         <div className="select">
                             <select
-                                onChange={event => {
-
-                                    setForm({
-                                        ...form,
-                                        priority: event.target.value
-                                    })
-
-                                }}
+                                onChange={handleChange}
+                                name="priority"
                                 value={form.priority}>
                                 <option>1</option>
                                 <option>2</option>
@@ -103,18 +100,12 @@ const ResourceCreatePage = () => {
                     </div>
                 </div>
 
-                <div classNameName="field" style={{ marginBottom: "20px" }}>
+                <div className="field" style={{ marginBottom: "20px" }}>
                     <label className="label">Time to Finish</label>
                     <div className="control">
                         <input
-                            onChange={event => {
-
-                                setForm({
-                                    ...form,
-                                    timeToFinish: event.target.value
-                                })
-
-                            }}
+                            name="timeToFinish"
+                            onChange={handleChange}
                             value={form.timeToFinish}
                             className="input"
                             type="number"
@@ -131,7 +122,7 @@ const ResourceCreatePage = () => {
                             className="button is-link">Submit</button>
                     </div>
                     <div className="control">
-                        <button className="button is-link is-light">Cancel</button>
+                        <button type = "button" onClick = {resetForm} className="button is-link is-light">Reset Form</button>
                     </div>
                 </div>
             </div>

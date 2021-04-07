@@ -1,8 +1,19 @@
 
-function Resources(req,res){
+export default async function (req, res) {
 
-    res.send("Work in progress")
+    if (req.method === "GET") {
+        const dataRes = await fetch("http://localhost:3001/api/resources")
+        const data = await dataRes.json()
+
+        res.send(data)
+    }else if(req.method === "POST"){
+
+        console.log(req.body)
+        return res.send("DATA HAS BEEN RECEIVED")
+    }
 
 }
 
-export default Resources
+
+
+
