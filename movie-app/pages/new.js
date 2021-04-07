@@ -19,6 +19,8 @@ const ResourceCreatePage = () => {
     const submitForm = () => {
         
         axios.post("/api/resources",form)
+        .then(response=>{alert(response.data)})
+        .catch(error=>{alert(error?.response?.data)})
     }
 
     const handleChange = event => {
