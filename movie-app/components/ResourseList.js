@@ -1,3 +1,6 @@
+import Link from 'next/link'
+
+
 const ResourseList = ({ resources }) => {
 
     return (
@@ -9,13 +12,16 @@ const ResourseList = ({ resources }) => {
 
                         {resources.map((resources) => {
                             return (
-                                <div key = {resources.id}>
+                                <div key={resources.id}>
                                     <div className="content is-medium">
 
 
                                         <h2 className="subtitle is-5 has-text-grey">{resources.createdAt}</h2>
                                         <h1 className="title has-text-black is-3">{resources.title}</h1>
                                         <p className="has-text-dark">{resources.description}</p>
+                                        <Link href={`/resources/${resources.id}`}>
+                                            <a className="button is-link">Learn More</a>
+                                        </Link>
                                     </div>
 
                                     <div className="is-divider"></div>

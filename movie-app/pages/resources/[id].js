@@ -1,9 +1,9 @@
 import NavBar from '../../components/navbar.js'
 
-const ResourceDetail = ({resourceId}) => {
+const ResourceDetail = ({ resource }) => {
     return (
         <>
-        <NavBar></NavBar>
+            <NavBar></NavBar>
 
             <section className="hero ">
                 <div className="hero-body">
@@ -14,16 +14,16 @@ const ResourceDetail = ({resourceId}) => {
                             <div className="columns">
                                 <div className="column is-8 is-offset-2">
                                     <div className="content is-medium">
-                                        <h2 className="subtitle is-4">{resourceId}</h2>
-                                        <h1 className="title">Title Here</h1>
-                                        <p>Desc here</p>
+                                        <h2 className="subtitle is-4">{resource.createdAt}</h2>
+                                        <h1 className="title">{resource.title}</h1>
+                                        <p>{resource.description}</p>
                                     </div>
                                 </div>
                             </div>
-                
 
 
-            </section>
+
+                        </section>
 
                         <div className="is-divider"></div>
 
@@ -38,11 +38,24 @@ const ResourceDetail = ({resourceId}) => {
 
     )
 }
+// ResourceDetail.getInitialProps = async ({query}) => {
+//     const dataRes = await fetch(`http://localhost:3001/api/resources/${query.id}`)
+//     const data = await dataRes.json()
 
-export function getServerSideProps({params}){
+//     return {
+//         resource: data
+
+//     }
+// }
+
+export async function getServerSideProps({params}){
+
+    const dataRes = await fetch(`http://localhost:3001/api/resources/${params.id}`)
+    const data = await dataRes.json()
+
     return{
         props:{
-            resourceId: params.id
+            resource: data
         }
 
     }

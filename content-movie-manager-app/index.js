@@ -45,7 +45,7 @@ app.post("/api/resources", (req, res) => {
     const resources = getResources()
     const resource = req.body
 
-    resource.createAt = new Date();
+    resource.createdAt = new Date();
     resource.status = "Inactive"
     resource.id = Date.now().toString()
 
