@@ -1,6 +1,13 @@
 import NavBar from '../../components/navbar.js'
+import { useRouter } from 'next/router'
+
 
 const ResourceDetail = ({ resource }) => {
+    // const router = useRouter();
+
+    // if (router.isFallback) {
+    //     return <div>Loading Data!</div>
+    // }
     return (
         <>
             <NavBar></NavBar>
@@ -66,7 +73,8 @@ export async function getStaticProps({ params }) {
     return {
         props: {
             resource: data
-        }
+        },
+        revalidate: 1
 
     }
 }
