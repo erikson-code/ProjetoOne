@@ -14,3 +14,22 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.active-resource{
+
+  background-color: rgb(31, 179, 224);
+  padding: 50px;
+  text-align: center;
+  color: white;
+  
+}
+.active-resource .resourceName{
+
+  font-size: 30px;
+
+}
+.active-resource .elapsed-time{
+
+  font-size: 64px;
+  font-weight: bold;
+}

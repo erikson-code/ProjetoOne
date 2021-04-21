@@ -1,11 +1,12 @@
 import Link from "next/link"
-
+import ActiveResources from './ActiveResources'
 
 const NavBar = () => {
 
   return (
 
     <>
+    <ActiveResources></ActiveResources>
       <nav className="navbar">
 
 

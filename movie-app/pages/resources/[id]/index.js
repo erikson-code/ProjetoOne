@@ -1,10 +1,17 @@
-import NavBar from '../../../components/navbar.js'
-
+import NavBar from '../../../components/navbar'
+import axios from 'axios'
 import Link from 'next/link';
 
 
 const ResourceDetail = ({ resource }) => {
-   
+
+    const activedResource = () => {
+        axios.patch("/api/resources",{...resource,status:"active"})
+        .then(_=>alert("Resource has been active"))
+        .catch(_=>alert("Cannot ative the resource"))
+
+    }
+
     return (
         <>
             <NavBar></NavBar>
@@ -21,11 +28,17 @@ const ResourceDetail = ({ resource }) => {
                                         <h2 className="subtitle is-4">{resource.createdAt}</h2>
                                         <h1 className="title">{resource.title}</h1>
                                         <p>{resource.description}</p>
+                                        <p>Time to Finish: {resource.timeToFinish} min</p>
                                         <Link href={`/resources/${resource.id}/edit`}>
-                                            <a className="button is-warning">
+                                            <a className="button is-warning mr-2">
                                                 Update
                                                 </a>
                                         </Link>
+                                        <button
+                                            className="button is-success"
+                                            onClick={activedResource}>
+                                            Actived
+                                        </button>
                                     </div>
                                 </div>
                             </div>
