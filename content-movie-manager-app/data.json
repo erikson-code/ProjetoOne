@@ -56,8 +56,9 @@
     "priority": "2",
     "timeToFinish": 60,
     "createdAt": "2021-04-14T14:56:44.701Z",
-    "status": "Inactive",
-    "id": "1618412204701"
+    "status": "active",
+    "id": "1618412204701",
+    "activationTime": "2021-04-21T21:58:46.785Z"
   },
   {
     "title": "Erikson 1223",
@@ -66,9 +67,8 @@
     "priority": "2",
     "timeToFinish": 60,
     "createdAt": "2021-04-14T14:56:44.668Z",
-    "status": "active",
-    "id": "1618412204668",
-    "activationTime": "2021-04-21T19:21:58.166Z"
+    "status": "Inactive",
+    "id": "1618412204668"
   },
   {
     "title": "casa",

@@ -1,9 +1,26 @@
 import Link from "next/link"
-
+import { useEffect, useState } from "react"
+import axios from 'axios'
 const ActiveResources = () => {
+    const [resource,setResource] = useState({})
+
+    useEffect(()=>{
+
+       async function fetchResource(){
+
+        const axiosRes =await axios.get("/api/activeresource")
+        const resource = axiosRes.data
+        
+        setResource(resource)
+        }
+
+        fetchResource()
+        
+    },[])
+
     return (
         <div className="active-resource">
-            <h1 className="resource-name">My active Resource</h1>
+            <h1 className="resource-name">{resource.title}</h1>
 
             <div className="time-wrapper">
                 <h2 className="elapsed-time">
