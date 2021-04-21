@@ -11,9 +11,11 @@ const NavBar = () => {
 
         <div className="container">
           <div className="navbar-brand">
-            <a className="navbar-item" href="../">
+            <Link href="/">
+            <a className="navbar-item">
               <h1>Content Manager</h1>
             </a>
+            </Link>
             <span className="navbar-burger burger" data-target="navbarMenu">
               <span></span>
               <span></span>
@@ -40,10 +42,11 @@ const NavBar = () => {
                 New
               </a>
             </Link>
-
+            <Link href = "#">
             <a className="navbar-item is-size-5 has-text-weight-semibold">
               Features
               </a>
+              </Link>
           </div>
         </div>
         </div>

@@ -14,8 +14,8 @@ const ResourseHighLight = ({ resources }) => {
               {resources.map((resources) => {
 
                 return (
-                  <div className="columns">
-                    <div key={resources.id} className="column is-8 is-offset-2">
+                  <div  key={resources.id} className="columns">
+                    <div className="column is-8 is-offset-2">
                       <div className="content is-medium">
                         <h2 className="subtitle is-4">{resources.createdAt}</h2>
                         <h1 className="title">{resources.title}</h1>
