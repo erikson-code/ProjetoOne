@@ -6,7 +6,6 @@ const NavBar = () => {
   return (
 
     <>
-    <ActiveResources></ActiveResources>
       <nav className="navbar">
 
 
@@ -52,6 +51,7 @@ const NavBar = () => {
         </div>
         </div>
     </nav>
+    <ActiveResources></ActiveResources>
     </>
   )
 }

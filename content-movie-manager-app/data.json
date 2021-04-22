@@ -44,21 +44,11 @@
     "description": "bgh",
     "link": "http://",
     "priority": "2",
-    "timeToFinish": 60,
+    "timeToFinish": 1,
     "createdAt": "2021-04-14T14:56:45.317Z",
-    "status": "Inactive",
-    "id": "1618412205317"
-  },
-  {
-    "title": "Hello",
-    "description": "bghcv",
-    "link": "http://hello.com",
-    "priority": "2",
-    "timeToFinish": 60,
-    "createdAt": "2021-04-14T14:56:44.701Z",
     "status": "active",
-    "id": "1618412204701",
-    "activationTime": "2021-04-21T21:58:46.785Z"
+    "id": "1618412205317",
+    "activationTime": "2021-04-22T16:50:32.567Z"
   },
   {
     "title": "Erikson 1223",
