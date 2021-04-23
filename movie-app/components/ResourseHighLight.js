@@ -23,9 +23,9 @@ const ResourseHighLight = ({ resources }) => {
                           </h2>
                         <h1 className="title">{resources.title}</h1>
 
-                        <p>{resources.description}</p>
+                        <p className="mb-2">{resources.description}</p>
                         <Link href={`/resources/${resources.id}`}>
-                          <a className="button is-link">Learn More</a>
+                          <a className="button is-light">Learn More</a>
                         </Link>
                       </div>
                     </div>

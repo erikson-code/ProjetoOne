@@ -22,7 +22,7 @@ const ResourseList = ({ resources }) => {
                                         </h1>
                                         <p className="has-text-dark">{resources.description}</p>
                                         <Link href={`/resources/${resources.id}`}>
-                                            <a className="button is-link">Learn More</a>
+                                            <a className="button is-light">Learn More</a>
                                         </Link>
                                     </div>
 

@@ -7,9 +7,9 @@ import moment from 'moment'
 const ResourceDetail = ({ resource }) => {
 
     const activedResource = () => {
-        axios.patch("/api/resources",{...resource,status:"active"})
-        .then(_=> location.reload())
-        .catch(_=>alert("Cannot ative the resource"))
+        axios.patch("/api/resources", { ...resource, status: "active" })
+            .then(_ => location.reload())
+            .catch(_ => alert("Cannot ative the resource"))
 
     }
 
@@ -28,20 +28,24 @@ const ResourceDetail = ({ resource }) => {
                                     <div className="content is-medium">
                                         <h2 className="subtitle is-4">{moment(resource.createdAt).format("LLL")}</h2>
                                         <h1 className="title">{resource.title}
-                                        <ResourceLabel status= {resource.status}></ResourceLabel>
+                                            <ResourceLabel status={resource.status}></ResourceLabel>
                                         </h1>
                                         <p>{resource.description}</p>
                                         <p>Time to Finish: {resource.timeToFinish} min</p>
-                                        <Link href={`/resources/${resource.id}/edit`}>
-                                            <a className="button is-warning mr-2">
-                                                Update
+                                        {   resource.status ==="Inactive" &&
+                                            <>
+                                                <Link href={`/resources/${resource.id}/edit`}>
+                                                    <a className="button is-warning mr-2">
+                                                        Update
                                                 </a>
-                                        </Link>
-                                        <button
-                                            className="button is-success"
-                                            onClick={activedResource}>
-                                            Actived
+                                                </Link>
+                                                <button
+                                                    className="button is-success"
+                                                    onClick={activedResource}>
+                                                    Actived
                                         </button>
+                                            </>
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -67,7 +71,7 @@ const ResourceDetail = ({ resource }) => {
 
 export async function getServerSideProps({ params }) {
 
-    const dataRes = await fetch(`http://localhost:3001/api/resources/${params.id}`)
+    const dataRes = await fetch(`${process.env.API_URL}/resources/${params.id}`)
     const data = await dataRes.json()
 
     return {

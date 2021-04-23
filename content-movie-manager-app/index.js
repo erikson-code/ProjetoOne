@@ -32,7 +32,7 @@ app.patch('/api/resources/:id', (req, res) => {
         return res.status(422).send("Cannot update because resource is complete")
 
     resources[index] = req.body
-
+    
     //Active resource related functionality
     if (req.body.status === "active") {
 

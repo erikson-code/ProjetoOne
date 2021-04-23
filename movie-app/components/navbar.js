@@ -37,7 +37,7 @@ const NavBar = () => {
                 Home
               </a>
               </Link>
-            <Link href="../new">
+            <Link href="/new">
               <a className="navbar-item is-size-5 has-text-weight-semibold">
                 New
               </a>
