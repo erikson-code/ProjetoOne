@@ -41,6 +41,16 @@ const ActiveResources = () => {
 
     }, [seconds])
 
+    const completeResource = () => {
+        axios.patch("/api/resources", { ...resource, status: "complete" })
+            .then(_ => location.reload())
+            .catch(_ => alert("Cannot complete Resource"))
+
+    }
+
+
+
+
     const hasResource = resource && resource.id
 
 
@@ -62,7 +72,9 @@ const ActiveResources = () => {
                                 {seconds}
                             </h2> :
                             <h2 className="elapsed-time">
-                                <button className="button is-success">
+                                <button
+                                    onClick={completeResource}
+                                    className="button is-success">
                                     Click and done!
                                 </button>
                             </h2>
@@ -72,7 +84,7 @@ const ActiveResources = () => {
 
             </div>
             {
-                hasResource ? <Link href="/">
+                hasResource ? <Link href= {`/resources/${resource.id}`}>
                     <a className="button">
                         Go to resource
                 </a>

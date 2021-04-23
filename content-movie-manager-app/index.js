@@ -20,37 +20,40 @@ app.get("/", (req, res) => {
 app.patch('/api/resources/:id', (req, res) => {
 
 
-     const resources = getResources();
+    const resources = getResources();
 
-     const { id } = req.params
+    const { id } = req.params
 
-     const index = resources.findIndex(resource => resource.id === id)
-     
-    const activeResource = resources.find(resource => resource.status ==="active")
+    const index = resources.findIndex(resource => resource.id === id)
 
-     resources[index] = req.body
-    
-     //Active resource related functionality
-     if(req.body.status === "active"){
+    const activeResource = resources.find(resource => resource.status === "active")
 
-        if(activeResource){
+    if (resources[index].status === "complete")
+        return res.status(422).send("Cannot update because resource is complete")
+
+    resources[index] = req.body
+
+    //Active resource related functionality
+    if (req.body.status === "active") {
+
+        if (activeResource) {
             return res.status(422).send("There is active resource already!")
         }
         resources[index].status = "active"
 
         resources[index].activationTime = new Date()
 
-     }
+    }
 
 
 
-     fs.writeFile(pathToFile, JSON.stringify(resources, null, 2), (error) => {
+    fs.writeFile(pathToFile, JSON.stringify(resources, null, 2), (error) => {
         if (error) {
             return res.status(422).send("Cannot store data in the file!")
         }
 
         return res.send("Data has been updated!")
- })
+    })
 
 })
 
@@ -72,7 +75,7 @@ app.get('/api/resources/:id', (req, res) => {
 
 app.get("/api/activeresource", (req, res) => {
     const resources = getResources()
-    const activeResource = resources.find((resource)=> resource.status === "active")
+    const activeResource = resources.find((resource) => resource.status === "active")
     res.send(activeResource)
 })
 
